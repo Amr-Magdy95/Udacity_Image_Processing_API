@@ -3,5 +3,11 @@
     "plugins": ["prettier"],
     "rules": {
       "prettier/prettier": 2 // Means error
-    }
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 8
+
+  }
   }
