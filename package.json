@@ -9,7 +9,7 @@
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "lint": "eslint . --ext .ts",
     "test": "npm run build && npm run jasmine",
-    "nodemon": "npm run test & nodemon dist/index"
+    "start": "nodemon dist/index"
   },
   "keywords": [],
   "author": "",
