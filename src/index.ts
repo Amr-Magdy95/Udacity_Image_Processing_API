@@ -17,3 +17,5 @@ app.use('/resize', routes);
 app.listen(port, () => {
   console.log(`the server has now started listening on port : ${port}`);
 });
+
+export default app;

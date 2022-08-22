@@ -16,28 +16,29 @@ export const resizeController = async (
   }
   const { name, height, width } = req.query as unknown as Query;
 
-  // validate url param
   try {
-    const {intHeight, intWidth} = imageValidator(name, height, width)
+    // validate url param -- and test imageValidator
+    const { intHeight, intWidth } = imageValidator(name, height, width);
     const newImageName = name + '_' + intWidth + '_' + intHeight;
 
     if (!fs.existsSync('./assets/thumb')) {
-        fs.mkdirSync('./assets/thumb');
-      }
-      if (fs.existsSync(`./assets/thumb/${newImageName}.jpg`)) {
-        //if cached display it
-        res.render('pages/index', {
-          newImage: path.join(
-            '/thumb',
-            name + '_' + intWidth + '_' + intHeight + '.jpg'
-          ),
-        });
-      } else {
-        //if not cached, resize image and save it in thumb
-        let newImage = await resizeImage(name, intHeight, intWidth, newImageName);
-        res.render('pages/index', { newImage: newImage });
-      }
-
+      fs.mkdirSync('./assets/thumb');
+    }
+    //if cached display it
+    if (fs.existsSync(`./assets/thumb/${newImageName}.jpg`)) {
+      res.status(200).render('pages/index', {
+        newImage: path.join(
+          '/thumb',
+          name + '_' + intWidth + '_' + intHeight + '.jpg'
+        ),
+      });
+    }
+    //if not cached, resize image and save it in thumb
+    else {
+      // test resizeImage
+      let newImage = await resizeImage(name, intHeight, intWidth, newImageName);
+      res.status(200).render('pages/index', { newImage: newImage });
+    }
   } catch (error) {
     console.log((error as Error).message);
     res.send((error as Error).message);
