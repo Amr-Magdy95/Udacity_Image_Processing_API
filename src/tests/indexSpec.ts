@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import app from '../index';
 import { imageValidator } from '../validators';
-import { resizeImage } from '../services';
+
 
 const request = supertest(app);
 
