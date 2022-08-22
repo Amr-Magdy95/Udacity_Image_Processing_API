@@ -18,7 +18,7 @@
 http://localhost:3000/resize?name=<santamonica>&width=<140>&height=<150>
 ```
 ## Resources that helped me 
-- Google Searches
+1. Google Searches
     -https://ejs.co/ 
     -https://kbroman.org/github_tutorial/pages/init.html 
     -https://www.atlassian.com/git/tutorials/setting-up-a-repository 
@@ -29,8 +29,8 @@ http://localhost:3000/resize?name=<santamonica>&width=<140>&height=<150>
     -https://learntypescript.dev/12/l3-eslint 
     -https://khalilstemmler.com/blogs/tooling/prettier/ 
     -
-- Youtube
- -https://www.youtube.com/watch?v=efJhX4SONVA&ab_channel=NickJanetakis 
-- Stackoverflow
+2. Youtube
+    -https://www.youtube.com/watch?v=efJhX4SONVA&ab_channel=NickJanetakis 
+3. Stackoverflow
     - https://stackoverflow.com/questions/63070243/getting-an-error-no-files-matching-the-pattern-were-found-when-using-prettier
 
