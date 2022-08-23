@@ -54,14 +54,11 @@ describe('test image validator', () => {
 
 describe('testing the image resizing function', () => {
   it('testing whether resizeImage would return the correct path', async () => {
-    const name = "santamonica", height= 150, width = 150;
+    const name = 'santamonica',
+      height = 150,
+      width = 150;
     const newImageName = name + '_' + width + '_' + height;
-    const res = await resizeImage(
-      name,
-      width,
-      height,
-      newImageName
-    );
+    const res = await resizeImage(name, width, height, newImageName);
     expect(res).toEqual('\\thumb\\santamonica_150_150.jpg');
   });
 });
