@@ -1,7 +1,8 @@
 import supertest from 'supertest';
 import app from '../index';
 import { imageValidator } from '../validators';
-
+import { resizeImage } from '../services';
+import * as path from 'path';
 
 const request = supertest(app);
 
@@ -32,13 +33,16 @@ describe('test image validator', () => {
       }).toThrow(new Error('one or more of the parameters is missing'));
     });
 
-    it("testing for validity of height", () => {
-        expect(() => {imageValidator('santamonica', '200sfsfs', '200')}).toThrow( new Error('Invalid height'));
+    it('testing for validity of height', () => {
+      expect(() => {
+        imageValidator('santamonica', '200sfsfs', '200');
+      }).toThrow(new Error('Invalid height'));
     });
-    it("testing for validity of width", () => {
-        expect(() => {imageValidator('santamonica', '200', '200sfsfs')}).toThrow( new Error('Invalid width'));
+    it('testing for validity of width', () => {
+      expect(() => {
+        imageValidator('santamonica', '200', '200sfsfs');
+      }).toThrow(new Error('Invalid width'));
     });
-
   });
 
   it('testing for an image name that doesnt exist in assets/full folder', () => {
@@ -46,7 +50,18 @@ describe('test image validator', () => {
       imageValidator('dalgamon', '200', '200');
     }).toThrow(new Error('the name you entered is invalid'));
   });
-
 });
 
-
+describe('testing the image resizing function', () => {
+  it('testing whether resizeImage would return the correct path', async () => {
+    const name = "santamonica", height= 150, width = 150;
+    const newImageName = name + '_' + width + '_' + height;
+    const res = await resizeImage(
+      name,
+      width,
+      height,
+      newImageName
+    );
+    expect(res).toEqual('\\thumb\\santamonica_150_150.jpg');
+  });
+});
