@@ -1,5 +1,5 @@
 # Udacity_Image_Processing_API
-##Installing Dependencies
+## Installing Dependencies
 
 >Move to the node project directory and run the following line in the command line 
 ```
